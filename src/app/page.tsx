@@ -1,332 +1,215 @@
+"use client";
+
+import { useState } from "react";
 import {
-  Accordion,
-  AccordionContent,
-  AccordionSummary,
-  Button,
-  EmergencyBanner,
-  EmergencyBannerBody,
-  EmergencyBannerHeading,
-  ErrorText,
-  Input,
-  Label,
-  LanguageSelector,
-  LanguageSelectorButton,
-  LanguageSelectorGlobeIcon,
-  LanguageSelectorMenu,
-  LanguageSelectorMenuItem,
-  Link,
-  NotificationBanner,
-  NotificationBannerBody,
-  NotificationBannerHeading,
-  Ol,
-  Radio,
-  RequirementBadge,
-  Select,
-  SupportText,
-  Textarea,
-  Ul,
-} from "@/components";
+  Bell,
+  ChevronRight,
+  MessageCircle,
+  Search,
+  PlusCircle,
+  ArrowUp,
+  User,
+  FileText,
+  Car,
+  Plane,
+  HomeIcon,
+  Square,
+  ChevronLeft,
+  Share2,
+} from "lucide-react";
+import { NotificationBanner, HamburgerMenuButton, Link } from "../components";
 
-export default function Page() {
+export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <main className="min-h-screen bg-white">
-      {/* ヘッダーセクション */}
-      <header className="bg-blue-700 text-white p-6">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-3xl font-bold">デジタル庁デザインシステム</h1>
-          <div className="flex items-center gap-4">
-            <LanguageSelector>
-              <LanguageSelectorButton>
-                <LanguageSelectorGlobeIcon />
-                <span className="ml-2">言語を選択</span>
-              </LanguageSelectorButton>
-              <LanguageSelectorMenu>
-                <LanguageSelectorMenuItem isCurrent>
-                  日本語
-                </LanguageSelectorMenuItem>
-                <LanguageSelectorMenuItem>English</LanguageSelectorMenuItem>
-              </LanguageSelectorMenu>
-            </LanguageSelector>
+    <div className="w-[393px] h-[852px] mx-auto bg-gray-50 flex flex-col overflow-auto relative shadow-lg border border-gray-200">
+      {/* Status Bar */}
+      <div className="bg-white px-5 py-2 flex items-center justify-between text-black">
+        <div className="font-medium">16:41</div>
+        <div className="flex items-center gap-2">
+          <div className="flex gap-1">
+            <div className="w-1 h-1 rounded-full bg-black"></div>
+            <div className="w-1 h-1 rounded-full bg-black"></div>
+            <div className="w-1 h-1 rounded-full bg-black"></div>
           </div>
+          <div className="flex gap-1">
+            <div className="w-1 h-3 bg-black rounded-sm"></div>
+            <div className="w-1 h-2 bg-black rounded-sm"></div>
+            <div className="w-1 h-1 bg-black rounded-sm"></div>
+            <div className="w-1 h-1 bg-black rounded-sm"></div>
+          </div>
+          <div className="rounded bg-black text-white text-xs px-1.5">53</div>
         </div>
-      </header>
+      </div>
 
-      {/* 緊急バナー */}
-      <EmergencyBanner>
-        <EmergencyBannerHeading level="h2">
-          重要なお知らせ
-        </EmergencyBannerHeading>
-        <EmergencyBannerBody>
-          これはデモンストレーション用のバナーです。緊急情報をここに表示します。
-        </EmergencyBannerBody>
-      </EmergencyBanner>
+      <main className="flex-1 flex flex-col overflow-auto">
+        {/* Title */}
+        <div className="bg-white px-4 py-5 flex items-center justify-between border-b">
+          <h1 className="text-xl font-bold">マイナポータル</h1>
+          <HamburgerMenuButton onClick={() => setMenuOpen(!menuOpen)} />
+        </div>
 
-      {/* お知らせバナー */}
-      <NotificationBanner bannerStyle="standard" type="info1">
-        <NotificationBannerHeading level="h2">
-          お知らせ
-        </NotificationBannerHeading>
-        <NotificationBannerBody>
-          このページはデジタル庁デザインシステムのコンポーネントを使用したデモです。
-        </NotificationBannerBody>
-      </NotificationBanner>
+        {/* Warning Banner */}
+        <div className="bg-[#f5e9c9] px-4 py-3 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Bell size={18} className="text-black" />
+            <span className="text-sm">
+              一部の情報が取得できない場合があります。
+            </span>
+          </div>
+          <Share2 size={18} />
+        </div>
 
-      {/* メインセクション */}
-      <section className="py-12 px-6">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold mb-8">
-            デジタル庁デザインシステムとは
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <p className="mb-4">
-                デジタル庁デザインシステムは、日本のデジタル行政サービスの一貫性と質を向上させるために開発されました。
-                利用者中心のデザインと最高のアクセシビリティを実現するためのコンポーネント群を提供します。
-              </p>
-              <Button size="md" variant="solid-fill" className="mt-4">
-                詳細を見る
-              </Button>
-            </div>
-            <div className="bg-gray-100 p-6 rounded-lg">
-              <h3 className="text-xl font-bold mb-4">特徴</h3>
-              <Ul>
-                <li>アクセシビリティ対応</li>
-                <li>レスポンシブデザイン</li>
-                <li>一貫したデザイン</li>
-                <li>効率的な開発</li>
-              </Ul>
+        {/* User Profile Section */}
+        <div className="p-5 flex items-center bg-white">
+          <div className="mr-4">
+            <div className="w-[90px] h-[90px] bg-white rounded-full flex items-center justify-center border border-gray-200 overflow-hidden">
+              <div className="bg-[#071d49] w-[40px] h-[40px] rounded-full relative -top-3">
+                <div className="bg-[#018099] w-full h-[50px] absolute bottom-[-15px]"></div>
+              </div>
             </div>
           </div>
+          <div className="flex-1">
+            <h2 className="text-3xl mb-1 font-medium">わたし</h2>
+            <Link href="#" className="text-blue-600 text-sm underline">
+              自治体を設定
+            </Link>
+          </div>
+          <div>
+            <div className="relative">
+              <MessageCircle
+                size={24}
+                className="text-blue-600 fill-blue-600"
+              />
+              <span className="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] rounded-full w-4 h-4 flex items-center justify-center font-bold">
+                4
+              </span>
+            </div>
+            <div className="text-blue-600 text-xs mt-1 text-center">
+              お知らせ
+            </div>
+          </div>
         </div>
-      </section>
 
-      {/* コンポーネント紹介セクション */}
-      <section className="py-12 px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold mb-8">主要コンポーネント</h2>
+        {/* Documents Section */}
+        <div className="bg-[#f8f8f5] p-4 mb-4">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-2xl font-bold">証明書</h3>
+            <Link href="#" className="text-blue-600 text-sm">
+              すべて見る
+            </Link>
+          </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-bold mb-4">フォーム要素</h3>
-              <div className="space-y-4">
+          <div className="grid grid-cols-2 gap-4">
+            {/* MyNumber Card */}
+            <div className="bg-white rounded-lg p-4 flex flex-col items-center shadow-sm">
+              <div className="flex justify-between w-full mb-3">
                 <div>
-                  <Label htmlFor="name">
-                    お名前 <RequirementBadge>必須</RequirementBadge>
-                  </Label>
-                  <Input id="name" placeholder="山田 太郎" />
-                  <SupportText>
-                    姓と名の間にスペースを入れてください
-                  </SupportText>
+                  <h4 className="font-medium text-base">マイナンバー</h4>
+                  <h4 className="font-medium text-base">カード</h4>
                 </div>
-
-                <div>
-                  <Label htmlFor="email">メールアドレス</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="example@example.com"
-                  />
+                <ChevronRight size={18} className="text-gray-400" />
+              </div>
+              <div className="w-full">
+                <div className="bg-[#ffccd1] p-2 rounded w-full h-12 flex items-center">
+                  <div className="bg-[#0b214e] w-6 h-8 rounded-sm flex items-center justify-center mr-2">
+                    <User size={14} className="text-white" />
+                  </div>
+                  <div className="bg-[#c7d5f4] flex-1 h-4 rounded-sm"></div>
                 </div>
               </div>
             </div>
 
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-bold mb-4">テキスト入力</h3>
-              <div className="space-y-4">
+            {/* Health Insurance */}
+            <div className="bg-white rounded-lg p-4 flex flex-col items-center shadow-sm">
+              <div className="flex justify-between w-full mb-3">
                 <div>
-                  <Label htmlFor="comment">ご意見・ご要望</Label>
-                  <Textarea
-                    id="comment"
-                    rows={4}
-                    placeholder="ここに入力してください"
-                  />
+                  <h4 className="font-medium text-base">健康保険証</h4>
                 </div>
-                <Button size="md" variant="solid-fill">
-                  送信
-                </Button>
+                <ChevronRight size={18} className="text-gray-400" />
               </div>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow">
-              <h3 className="text-xl font-bold mb-4">セレクション</h3>
-              <div className="space-y-4">
-                <div>
-                  <Label htmlFor="prefecture">都道府県</Label>
-                  <Select id="prefecture">
-                    <option value="">選択してください</option>
-                    <option value="tokyo">東京都</option>
-                    <option value="osaka">大阪府</option>
-                    <option value="hokkaido">北海道</option>
-                  </Select>
-                </div>
-
-                <div>
-                  <fieldset className="space-y-2">
-                    <legend>お問い合わせ種別</legend>
-                    <div>
-                      <Radio id="inquiry1" name="inquiry" value="general" />
-                      <Label htmlFor="inquiry1">一般的なお問い合わせ</Label>
+              <div className="w-full">
+                <div className="bg-[#deeefe] p-2 rounded w-full h-12 flex items-center justify-between">
+                  <div className="bg-gray-500 w-8 h-2"></div>
+                  <div className="flex items-end gap-1">
+                    <div className="bg-[#4885db] w-5 h-5 rounded flex items-center justify-center">
+                      <Square size={8} className="text-white" />
                     </div>
-                    <div>
-                      <Radio id="inquiry2" name="inquiry" value="technical" />
-                      <Label htmlFor="inquiry2">技術的なお問い合わせ</Label>
-                    </div>
-                  </fieldset>
+                    <div className="bg-[#ff8ca0] w-3 h-3 rounded-sm"></div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* FAQ セクション */}
-      <section className="py-12 px-6">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold mb-8">よくある質問</h2>
-
-          <div className="space-y-4">
-            <Accordion>
-              <AccordionSummary>
-                デザインシステムとは何ですか？
-              </AccordionSummary>
-              <AccordionContent>
-                <p>
-                  デザインシステムとは、デジタルプロダクトの設計と開発を一貫性を持って効率的に行うための、
-                  再利用可能なコンポーネント、ガイドライン、ドキュメントの集合体です。ユーザー体験の向上と開発の効率化を目的としています。
-                </p>
-              </AccordionContent>
-            </Accordion>
-
-            <Accordion>
-              <AccordionSummary>
-                どのようにデザインシステムを導入できますか？
-              </AccordionSummary>
-              <AccordionContent>
-                <p>
-                  デザインシステムの導入は、まずプロジェクトに必要なパッケージをインストールすることから始まります。
-                  詳しい導入方法はドキュメンテーションをご参照ください。
-                </p>
-                <Ol>
-                  <li>パッケージのインストール</li>
-                  <li>設定ファイルの作成</li>
-                  <li>コンポーネントの利用開始</li>
-                </Ol>
-              </AccordionContent>
-            </Accordion>
-
-            <Accordion>
-              <AccordionSummary>
-                アクセシビリティ対応はどうなっていますか？
-              </AccordionSummary>
-              <AccordionContent>
-                <p>
-                  デジタル庁デザインシステムはWCAG
-                  2.1のAAレベルに準拠するよう設計されています。
-                  スクリーンリーダー対応、キーボード操作、色のコントラスト比などが考慮されています。
-                </p>
-              </AccordionContent>
-            </Accordion>
-          </div>
-        </div>
-      </section>
-
-      {/* お問い合わせセクション */}
-      <section className="py-12 px-6 bg-gray-50">
-        <div className="container mx-auto">
-          <h2 className="text-2xl font-bold mb-8">お問い合わせ</h2>
-
-          <div className="max-w-xl mx-auto bg-white p-8 rounded-lg shadow">
-            <form className="space-y-6">
-              <div>
-                <Label htmlFor="contact-name">
-                  お名前 <RequirementBadge>必須</RequirementBadge>
-                </Label>
-                <Input id="contact-name" placeholder="お名前を入力" />
+            {/* Driver's License */}
+            <div className="bg-white rounded-lg p-4 flex flex-col items-center shadow-sm">
+              <div className="flex justify-between w-full mb-3">
+                <h4 className="font-medium text-base">運転免許</h4>
+                <ChevronRight size={18} className="text-gray-400" />
               </div>
-
-              <div>
-                <Label htmlFor="contact-email">
-                  メールアドレス <RequirementBadge>必須</RequirementBadge>
-                </Label>
-                <Input
-                  id="contact-email"
-                  type="email"
-                  placeholder="example@example.com"
-                />
-                <ErrorText>正しいメールアドレスを入力してください</ErrorText>
+              <div className="w-full flex justify-center">
+                <Car size={24} className="text-gray-600" />
               </div>
-
-              <div>
-                <Label htmlFor="contact-message">
-                  メッセージ <RequirementBadge>必須</RequirementBadge>
-                </Label>
-                <Textarea
-                  id="contact-message"
-                  rows={5}
-                  placeholder="お問い合わせ内容を入力してください"
-                />
-              </div>
-
-              <div>
-                <Button type="submit" size="md" variant="solid-fill">
-                  送信する
-                </Button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
-
-      {/* フッター */}
-      <footer className="bg-gray-800 text-white py-12 px-6">
-        <div className="container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
-              <h3 className="text-xl font-bold mb-4">
-                デジタル庁デザインシステム
-              </h3>
-              <p>日本のデジタル行政サービス向けの統一されたデザインシステム</p>
             </div>
 
-            <div>
-              <h3 className="text-xl font-bold mb-4">リンク</h3>
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/">ホーム</Link>
-                </li>
-                <li>
-                  <Link href="/components">コンポーネント</Link>
-                </li>
-                <li>
-                  <Link href="/guidelines">ガイドライン</Link>
-                </li>
-                <li>
-                  <Link href="/contact">お問い合わせ</Link>
-                </li>
-              </ul>
+            {/* Passport */}
+            <div className="bg-white rounded-lg p-4 flex flex-col items-center shadow-sm">
+              <div className="flex justify-between w-full mb-3">
+                <h4 className="font-medium text-base">パスポート</h4>
+                <ChevronRight size={18} className="text-gray-400" />
+              </div>
+              <div className="w-full flex justify-center">
+                <Plane size={24} className="text-gray-600" />
+              </div>
             </div>
-
-            <div>
-              <h3 className="text-xl font-bold mb-4">お問い合わせ</h3>
-              <address className="not-italic">
-                〒100-8914
-                <br />
-                東京都千代田区永田町1-6-1
-                <br />
-                デジタル庁
-                <br />
-                <Link href="mailto:info@example.gov.jp">
-                  info@example.gov.jp
-                </Link>
-              </address>
-            </div>
-          </div>
-
-          <div className="mt-12 text-center">
-            <p>© 2023 デジタル庁. All rights reserved.</p>
           </div>
         </div>
-      </footer>
-    </main>
+
+        {/* Health Section */}
+        <div className="bg-[#f8f8f5] p-4 mb-20">
+          <div className="flex justify-between items-center">
+            <h3 className="text-2xl font-bold">健康医療</h3>
+            <Link href="#" className="text-blue-600 text-sm">
+              すべて見る
+            </Link>
+          </div>
+        </div>
+      </main>
+
+      {/* Bottom Navigation */}
+      <div className="bg-white border-t absolute bottom-0 w-full">
+        <div className="flex justify-around items-center py-3">
+          <div className="flex flex-col items-center text-blue-700">
+            <HomeIcon size={22} className="fill-blue-700 stroke-blue-700" />
+            <span className="text-xs mt-1 font-medium">ホーム</span>
+          </div>
+          <div className="flex flex-col items-center text-gray-600">
+            <FileText size={22} />
+            <span className="text-xs mt-1">やること</span>
+          </div>
+          <div className="flex flex-col items-center text-gray-600">
+            <Search size={22} />
+            <span className="text-xs mt-1">さがす</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Floating Buttons */}
+      <div className="absolute bottom-20 inset-x-0 flex justify-center">
+        <div className="bg-white/70 backdrop-blur-sm py-2 px-16 rounded-full flex items-center gap-6">
+          <div className="flex flex-col items-center">
+            <div className="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center">
+              <PlusCircle size={22} className="text-gray-600" />
+            </div>
+          </div>
+          <div className="flex flex-col items-center">
+            <div className="bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center">
+              <ArrowUp size={22} className="text-gray-600" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
