@@ -1,0 +1,570 @@
+EmergencyBanner:
+  description: 緊急性の高い通知をページの先頭に表示するバナー。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: 子要素（EmergencyBannerHeading や EmergencyBannerBody）を含める。
+  accessibility:
+    guidelines:
+      - 視認性を高く保つためページの先頭に設置する。
+      - 視覚障害者がアクセス可能なように ARIA ラベルを適切に設定する。
+  usage:
+    placement: body または main 内の最上部
+    exampleCode: |
+      <EmergencyBanner>
+        <EmergencyBannerHeading level="h2">警報発令</EmergencyBannerHeading>
+        <EmergencyBannerBody>安全な場所へ避難してください。</EmergencyBannerBody>
+      </EmergencyBanner>
+  storybook:
+    story:
+      name: WithLink
+      description: 外部リンク付きの使用例。
+
+EmergencyBannerHeading:
+  description: EmergencyBanner 内で使用する見出しコンポーネント。
+  props:
+    - name: level
+      type: enum(h1-h6)
+      required: true
+      description: 見出しレベル。
+    - name: children
+      type: ReactNode
+      required: true
+      description: テキスト内容。
+  usage:
+    placement: EmergencyBanner 内部
+    exampleCode: |
+      <EmergencyBannerHeading level="h2">警告</EmergencyBannerHeading>
+
+EmergencyBannerBody:
+  description: EmergencyBanner の本文用コンポーネント。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: バナーの説明テキストまたはリンク等。
+  usage:
+    exampleCode: |
+      <EmergencyBannerBody>避難情報の詳細</EmergencyBannerBody>
+
+EmergencyBannerButton:
+  description: EmergencyBanner 内のリンクボタン。
+  props:
+    - name: href
+      type: string
+      required: true
+      description: 遷移先 URL。
+    - name: target
+      type: string
+      required: false
+      description: "_blank" で新規タブで開くなど。
+  usage:
+    exampleCode: |
+      <EmergencyBannerButton href="/shelter">避難所を確認</EmergencyBannerButton>
+
+ErrorText:
+  description: フォームのバリデーションエラーメッセージを表示。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: 表示するエラーメッセージ。
+  usage:
+    exampleCode: |
+      <ErrorText>この項目は必須です。</ErrorText>
+
+HamburgerMenuButton:
+  description: ハンバーガーメニューを開くためのボタン。
+  props:
+    - name: onClick
+      type: function
+      required: true
+      description: ボタン押下時のイベント。
+  usage:
+    exampleCode: |
+      <HamburgerMenuButton onClick={toggleMenu} />
+
+Input:
+  description: ユーザーの入力を受け取る基本的なテキストフィールド。
+  props:
+    - name: type
+      type: string
+      required: true
+      description: "text" や "email" などの入力種別。
+    - name: value
+      type: string
+      required: false
+      description: 入力値。
+    - name: onChange
+      type: function
+      required: false
+      description: 入力時のコールバック。
+  usage:
+    exampleCode: |
+      <Input type="text" value={value} onChange={handleChange} />
+
+Label:
+  description: フォーム部品に関連付けるラベル。
+  props:
+    - name: htmlFor
+      type: string
+      required: true
+      description: 対象の input 要素の ID。
+    - name: children
+      type: ReactNode
+      required: true
+      description: ラベルテキスト。
+  usage:
+    exampleCode: |
+      <Label htmlFor="email">メールアドレス</Label>
+
+LanguageSelector:
+  description: 言語切替用 UI コンポーネント。
+  props:
+    - name: currentLang
+      type: string
+      required: true
+      description: 現在選択されている言語コード。
+    - name: onChange
+      type: function
+      required: true
+      description: 言語変更時のコールバック。
+  usage:
+    exampleCode: |
+      <LanguageSelector currentLang="ja" onChange={(lang) => console.log(lang)} />
+Legend:
+  description: フィールドセット内のグループタイトルを表す。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: ラベルテキスト。
+  usage:
+    exampleCode: |
+      <Legend>お問い合わせ項目</Legend>
+
+Link:
+  description: テキストリンクコンポーネント。
+  props:
+    - name: href
+      type: string
+      required: true
+      description: リンク先の URL。
+    - name: children
+      type: ReactNode
+      required: true
+      description: 表示テキスト。
+    - name: target
+      type: string
+      required: false
+      description: "_blank" で新しいタブで開く等。
+  usage:
+    exampleCode: |
+      <Link href="https://example.com" target="_blank">外部リンク</Link>
+
+NotificationBanner:
+  description: 状態通知などを表示するバナー。
+  props:
+    - name: type
+      type: enum("info1", "info2", "warning", "error", "success")
+      required: true
+      description: 通知の種別。
+    - name: bannerStyle
+      type: enum("standard", "color-chip")
+      required: true
+      description: スタイルのバリエーション。
+    - name: children
+      type: ReactNode
+      required: true
+      description: 見出し・本文などの子要素。
+  usage:
+    exampleCode: |
+      <NotificationBanner type="warning" bannerStyle="standard">
+        <NotificationBannerHeader>
+          <NotificationBannerHeading level="h2">警告</NotificationBannerHeading>
+        </NotificationBannerHeader>
+        <NotificationBannerBody>内容を確認してください。</NotificationBannerBody>
+      </NotificationBanner>
+
+NotificationBannerHeading:
+  description: NotificationBanner 内の見出し。
+  props:
+    - name: level
+      type: enum("h1"..."h6")
+      required: true
+      description: 見出しレベル。
+    - name: children
+      type: ReactNode
+      required: true
+      description: 見出しテキスト。
+  usage:
+    exampleCode: |
+      <NotificationBannerHeading level="h2">バナータイトル</NotificationBannerHeading>
+
+NotificationBannerBody:
+  description: NotificationBanner の本文領域。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: テキストまたはコンテンツ。
+  usage:
+    exampleCode: |
+      <NotificationBannerBody>本文内容</NotificationBannerBody>
+
+NotificationBannerClose:
+  description: バナーを閉じるためのアイコンボタン。
+  props:
+    - name: onClick
+      type: function
+      required: true
+      description: 押下時のイベントハンドラ。
+  usage:
+    exampleCode: |
+      <NotificationBannerClose onClick={() => setOpen(false)} />
+
+Ol:
+  description: 順序付きリストのコンポーネント。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: li 要素など。
+  usage:
+    exampleCode: |
+      <Ol>
+        <li>手順1</li>
+        <li>手順2</li>
+      </Ol>
+
+Radio:
+  description: ラジオボタン入力。
+  props:
+    - name: value
+      type: string
+      required: true
+      description: 選択肢の値。
+    - name: name
+      type: string
+      required: true
+      description: グループ名。
+    - name: checked
+      type: boolean
+      required: false
+      description: 選択されているかどうか。
+    - name: onChange
+      type: function
+      required: false
+      description: 変更イベント。
+  usage:
+    exampleCode: |
+      <Radio name="fruit" value="apple" checked={selected === "apple"} onChange={handleChange} />
+
+RequirementBadge:
+  description: 入力が必須であることを示すバッジ。
+  props:
+    - name: required
+      type: boolean
+      required: true
+      description: 必須の場合は true。
+  usage:
+    exampleCode: |
+      <RequirementBadge required={true} />
+
+Select:
+  description: セレクトボックス。
+  props:
+    - name: options
+      type: Array<{ label: string, value: string }>
+      required: true
+      description: 選択肢一覧。
+    - name: value
+      type: string
+      required: false
+      description: 現在の値。
+    - name: onChange
+      type: function
+      required: false
+      description: 値変更イベント。
+  usage:
+    exampleCode: |
+      <Select
+        options={[{ label: 'A', value: 'a' }, { label: 'B', value: 'b' }]}
+        value={selected}
+        onChange={setSelected}
+      />
+
+SupportText:
+  description: 入力補助説明や備考。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: テキスト。
+  usage:
+    exampleCode: |
+      <SupportText>半角英数字で入力してください</SupportText>
+
+Textarea:
+  description: 複数行のテキスト入力欄。
+  props:
+    - name: value
+      type: string
+      required: false
+      description: 入力値。
+    - name: onChange
+      type: function
+      required: false
+      description: 入力変更時の処理。
+  usage:
+    exampleCode: |
+      <Textarea value={text} onChange={handleTextChange} />
+
+Ul:
+  description: 順序なしリスト。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: li 要素など。
+  usage:
+    exampleCode: |
+      <Ul>
+        <li>項目1</li>
+        <li>項目2</li>
+      </Ul>
+
+UtilityLink:
+  description: ユーティリティリンクコンポーネント。
+  props:
+    - name: href
+      type: string
+      required: false
+      description: 通常のリンク先。
+    - name: asChild
+      type: boolean
+      required: false
+      description: true にすると任意のリンクで Slot を使える。
+    - name: target
+      type: string
+      required: false
+      description: _blank など。
+  usage:
+    exampleCode: |
+      <UtilityLink href="#">利用規約</UtilityLink>
+
+ModalDialog:
+  description: モーダルダイアログ。
+  props:
+    - name: ref
+      type: HTMLDialogElement
+      required: true
+      description: open/close の制御に必要。
+    - name: children
+      type: ReactNode
+      required: true
+      description: DialogBody など。
+  usage:
+    exampleCode: |
+      <Dialog ref={dialogRef}><DialogBody>本文</DialogBody></Dialog>
+
+Pagination:
+  description: ページネーションナビゲーション。
+  props:
+    - name: children
+      type: ReactNode
+      required: true
+      description: PaginationItem, PaginationNext など。
+  usage:
+    exampleCode: |
+      <Pagination>
+        <PaginationPrev href="#" />
+        <PaginationCurrent current={2} max={10} />
+        <PaginationNext href="#" />
+      </Pagination>
+
+ScrollToTopButton:
+  description: ページ最上部に戻るボタン。
+  props:
+    - name: onClick
+      type: function
+      required: false
+      description: クリック時の処理（省略時は window.scrollTo）。
+  usage:
+    exampleCode: |
+      <ScrollToTopButton onClick={() => window.scrollTo({ top: 0 })} />
+foundations:
+  color:
+    description: "ブランドカラー、UI色、状態色で構成されたデザインカラーシステム。すべての UI コンポーネントやレイアウトに一貫性を与えるために使用されます。"
+    categories:
+      - name: Blue
+        values:
+          - 50
+          - 100
+          - 200
+          - 300
+          - 400
+          - 500
+          - 600
+          - 700
+          - 800
+          - 900
+          - 1000
+          - 1100
+          - 1200
+      - name: Light Blue
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Cyan
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Green
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Lime
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Yellow
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Orange
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Red
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Magenta
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Purple
+        values: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+      - name: Solid Gray
+        values: [50, 100, 200, 300, 400, 420, 500, 536, 600, 700, 800, 900]
+      - name: Status
+        subcategories:
+          - Success:
+              values: [1, 2]
+          - Error:
+              values: [1, 2]
+          - Warning (Yellow):
+              values: [1, 2]
+          - Warning (Orange):
+              values: [1, 2]
+          - Focus:
+              values: [yellow, blue]
+    reference_url: https://design.digital.go.jp/foundations/color/
+
+  typography:
+    description: "画面上の文字情報に統一感を持たせるためのルールとスタイルの体系。サイズ・太さ・行間などを用途別に分類。"
+    categories:
+      - Display (Dsp):
+          - 64N-140
+          - 57N-140
+          - 48N-140
+      - Standard (Std):
+          Bold:
+            - 45B-140
+            - 36B-140
+            - 32B-150
+            - 28B-150
+            - 24B-150
+            - 22B-150
+            - 20B-160
+            - 18B-160
+            - 17B-170
+            - 16B-170
+            - 16B-175
+          Normal:
+            - 45N-140
+            - 36N-140
+            - 32N-150
+            - 28N-150
+            - 26N-150
+            - 24N-150
+            - 22N-150
+            - 20N-150
+            - 18N-160
+            - 17N-170
+            - 16N-170
+            - 16N-175
+      - Dense (Dns):
+          Bold:
+            - 17B-130
+            - 17B-120
+            - 16B-130
+            - 16B-120
+            - 14B-130
+            - 14B-120
+          Normal:
+            - 17N-130
+            - 17N-120
+            - 16N-130
+            - 16N-120
+            - 14N-130
+            - 14N-120
+      - Oneline (Oln):
+          Bold:
+            - 17B-100
+            - 16B-100
+            - 14B-100
+          Normal:
+            - 17N-100
+            - 16N-100
+            - 14N-100
+      - Mono:
+          Bold:
+            - 17B-150
+            - 16B-150
+            - 14B-150
+          Normal:
+            - 17N-150
+            - 16N-150
+            - 14N-150
+    reference_url: https://design.digital.go.jp/foundations/typography/
+
+  layout:
+    description: "画面レイアウトの構造的な設計思想。グリッドやレスポンシブの設定を含む。"
+    elements:
+      - fluid_layout
+      - grid_system
+      - responsive_design
+    reference_url: https://design.digital.go.jp/foundations/layout/
+
+  spacing:
+    description: "余白のサイズを統一し、コンポーネントや要素間の一貫性を保つためのスケール。"
+    values:
+      - 4
+      - 8
+      - 12
+      - 16
+      - 20
+      - 24
+      - 32
+      - 40
+      - 48
+      - 56
+      - 64
+    reference_url: https://design.digital.go.jp/foundations/spacing/
+
+  corner_shapes:
+    description: "角丸サイズのルールを定め、ビジュアルの一貫性を担保。"
+    values:
+      - none
+      - 4px
+      - 6px
+      - 8px
+      - 12px
+      - 16px
+      - 32px
+      - full
+    reference_url: https://design.digital.go.jp/foundations/corner-shapes/
+
+  elevation:
+    description: "Elevation（影）は UI の層構造や重要度を表現するビジュアル的手法。"
+    levels:
+      - shadow-1
+      - shadow-2
+      - shadow-3
+      - shadow-4
+      - shadow-5
+      - shadow-6
+      - shadow-7
+      - shadow-8
+    usage_notes:
+      - モーダルやドロップダウンには高めのレベルを使用
+      - カードやボタンには中程度のレベル
+      - 一貫性を持たせ、過度な使用は避ける
+    reference_url: https://design.digital.go.jp/foundations/elevation/
