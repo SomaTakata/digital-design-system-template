@@ -18,30 +18,30 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                 fontFamily:
                   '-apple-system, BlinkMacSystemFont, "SF Pro JP", "SF Pro Text", "SF Pro Icons", "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif',
               }}
-              className="w-[393px] h-[852px] border border-border rounded-[48px] bg-background flex flex-col overflow-hidden"
+              className="w-[393px] h-[852px] border border-border rounded-[48px] bg-white flex flex-col overflow-hidden"
             >
               <main className="flex flex-col items-center h-full justify-center">
                 {/* Status Bar */}
-                <div className="bg-background px-8 pt-5 pb-2 flex w-full justify-between text-primary">
-                  <div className="font-medium">16:41</div>
+                <div className="bg-white px-8 pt-5 pb-2 flex w-full justify-between ">
+                  <div className="font-medium text-black">16:41</div>
                   <div className="flex items-center gap-2">
                     <div className="flex gap-1">
-                      <div className="w-1 h-1 rounded-full bg-foreground"></div>
-                      <div className="w-1 h-1 rounded-full bg-foreground"></div>
-                      <div className="w-1 h-1 rounded-full bg-foreground"></div>
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
                     </div>
                     <div className="flex gap-1">
-                      <div className="w-1 h-3 bg-foreground rounded-sm"></div>
-                      <div className="w-1 h-2 bg-foreground rounded-sm"></div>
-                      <div className="w-1 h-1 bg-foreground rounded-sm"></div>
-                      <div className="w-1 h-1 bg-foreground rounded-sm"></div>
+                      <div className="w-1 h-3 bg-black rounded-sm"></div>
+                      <div className="w-1 h-2 bg-black rounded-sm"></div>
+                      <div className="w-1 h-1 bg-black rounded-sm"></div>
+                      <div className="w-1 h-1 bg-black rounded-sm"></div>
                     </div>
-                    <div className="rounded bg-foreground text-background text-xs px-1.5">
+                    <div className="rounded bg-black text-white text-xs px-1.5">
                       53
                     </div>
                   </div>
                 </div>
-                <div className="flex-1 h-full bg-background">{children}</div>
+                <div className="flex-1 h-full bg-white">{children}</div>
               </main>
             </div>
           </div>

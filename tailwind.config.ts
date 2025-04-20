@@ -14,6 +14,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [],
+  plugins: [require("@digital-go-jp/tailwind-theme-plugin")],
 };
 export default config;

@@ -25,3 +25,5 @@ body {
     text-wrap: balance;
   }
 }
+
+@plugin "@digital-go-jp/tailwind-theme-plugin";
