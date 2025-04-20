@@ -14,8 +14,28 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               }}
               className="w-[393px] h-[852px] border border-border rounded-[48px] bg-background flex flex-col overflow-hidden"
             >
-              <main className="flex items-center h-full justify-center">
-                {children}
+              <main className="flex flex-col items-center h-full justify-center">
+                {/* Status Bar */}
+                <div className="bg-white px-8 pt-5 pb-2  flex w-full justify-between text-black">
+                  <div className="font-medium">16:41</div>
+                  <div className="flex items-center gap-2">
+                    <div className="flex gap-1">
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
+                      <div className="w-1 h-1 rounded-full bg-black"></div>
+                    </div>
+                    <div className="flex gap-1">
+                      <div className="w-1 h-3 bg-black rounded-sm"></div>
+                      <div className="w-1 h-2 bg-black rounded-sm"></div>
+                      <div className="w-1 h-1 bg-black rounded-sm"></div>
+                      <div className="w-1 h-1 bg-black rounded-sm"></div>
+                    </div>
+                    <div className="rounded bg-black text-white text-xs px-1.5">
+                      53
+                    </div>
+                  </div>
+                </div>
+                <div className="flex-1 h-full">{children}</div>
               </main>
             </div>
           </div>
