@@ -102,7 +102,7 @@ Input:
       description: 入力時のコールバック。
   usage:
     exampleCode: |
-      <Input type="text" value={value} onChange={handleChange} />
+      <Input type="text" value={value} className="w-full" onChange={handleChange} />
 
 Label:
   description: フォーム部品に関連付けるラベル。
@@ -319,7 +319,7 @@ Textarea:
       description: 入力変更時の処理。
   usage:
     exampleCode: |
-      <Textarea value={text} onChange={handleTextChange} />
+      <Textarea value={text} className="w-full" onChange={handleTextChange} />
 
 Ul:
   description: 順序なしリスト。
